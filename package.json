@@ -1,13 +1,25 @@
 {
   "name": "angular-electron",
   "version": "0.0.0",
+  "main": "main.js",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "ng:serve": "ng serve",
+    "start": "npm-run-all -p ng:serve electron:start",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "electron": "ng build --base-href ./ && electron .",
+    "electron-tsc": "tsc main.ts && ng build --base-href ./ && electron .",
+    "electron:start": "npm-run-all -s electron:wait electron:serve",
+    "electron:wait": "./node_modules/.bin/wait-on http-get://localhost:4200/",
+    "electron:serve": "./node_modules/.bin/electron .",
+    "electron:local": "npm-run-all -s build:prod electron:serve",
+    "electron:linux": "npm run build:prod && npx electron-builder build --linux",
+    "electron:windows": "npm run build:prod && npx electron-builder build --windows ",
+    "electron:mac": "npm run build:prod && npx electron-builder build --mac",
+    "build:prod": "npm run build -- -c production --base-href ./"
   },
   "private": true,
   "dependencies": {
@@ -33,6 +45,9 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "~4.3.0",
+    "electron": "^3.0.13",
+    "electron-builder": "^20.17.1",
+    "electron-reload": "^1.2.3",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~3.0.0",
@@ -43,6 +58,8 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
-    "typescript": "~2.9.2"
+    "typescript": "~2.9.2",
+    "npm-run-all": "^4.1.3",
+    "wait-on": "^2.1.0"
   }
 }
