@@ -8,9 +8,11 @@ const BrowserWindow = electron.BrowserWindow
 const path = require('path');
 const url = require('url');
 
-require('electron-reload')(__dirname);
-
 require('dotenv').config();
+
+if (process.env.NODE_ENV === 'development') {
+    require('electron-reload')(__dirname)
+}
 
 let win = null;
 
