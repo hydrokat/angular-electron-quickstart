@@ -21,6 +21,11 @@
     "electron:mac": "npm run build:prod && npx electron-builder build --mac",
     "build:prod": "npm run build -- -c production --base-href ./"
   },
+  "build": {
+    "directories": {
+      "output": "release/"
+    }
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^6.1.0",
