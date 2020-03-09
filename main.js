@@ -41,7 +41,7 @@ app.on('ready', function () {
 
     // Show dev tools
     // Remove this line before distributing
-    win.webContents.openDevTools();
+    // win.webContents.openDevTools();
 
     // Specify entry point    
     if (typeof process.env.PACKAGE === "undefined" || process.env.PACKAGE === true) {
