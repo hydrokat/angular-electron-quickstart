@@ -51,7 +51,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
     "codelyzer": "^5.1.2",
-    "electron": "^8.1.0",
+    "electron": "^8.2.4",
     "electron-builder": "^20.17.1",
     "electron-reload": "^1.2.3",
     "jasmine-core": "~2.99.1",
